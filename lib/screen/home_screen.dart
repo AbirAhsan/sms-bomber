@@ -13,7 +13,7 @@ class HomeScreen extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           automaticallyImplyLeading: false,
-          title: const Text("SMS Bomber"),
+          title: const Text("SMS Bomber 💣"),
           bottom: const TabBar(
             indicatorColor: Colors.amber,
             tabs: [
