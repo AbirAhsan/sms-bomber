@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_native_contact_picker/flutter_native_contact_picker.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:smsbomber/service/form_validation.dart';
 import 'package:smsbomber/widget/custom_textfield.dart';
+import 'package:telephony/telephony.dart';
 
 class ForSingleNumber extends StatefulWidget {
   const ForSingleNumber({Key? key}) : super(key: key);
@@ -16,11 +18,45 @@ class _ForSingleNumberState extends State<ForSingleNumber> {
   final TextEditingController _smsCtrl = TextEditingController();
   final TextEditingController _smsCountCtrl = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final FlutterContactPicker _contactPicker = FlutterContactPicker();
+  final Telephony telephony = Telephony.instance;
   bool _isStopMessage = true;
 
   int _currentIndexNumber = 0;
-  final FlutterContactPicker _contactPicker = FlutterContactPicker();
+
   Contact? _contact;
+
+  bool permissionsGranted = false;
+  @override
+  void initState() {
+    _checkPermission();
+    super.initState();
+  }
+
+  Future<void> _checkPermission() async {
+    // final serviceStatus = await Permission.locationWhenInUse.serviceStatus;
+    // final isGpsOn = serviceStatus == ServiceStatus.enabled;
+    // if (!isGpsOn) {
+    //   print('Turn on location services before requesting permission.');
+    //   return;
+    // }
+
+    final sStatus = await Permission.sms.request();
+    final cStatus = await Permission.contacts.request();
+    if (sStatus == PermissionStatus.granted &&
+        cStatus == PermissionStatus.granted) {
+      print('Permission granted');
+    } else if (sStatus == PermissionStatus.denied ||
+        cStatus == PermissionStatus.denied) {
+      print(
+          'Permission denied. Show a dialog and again ask for the permission');
+      _checkPermission();
+    } else if (sStatus == PermissionStatus.permanentlyDenied ||
+        cStatus == PermissionStatus.permanentlyDenied) {
+      print('Take the user to the settings page.');
+      await openAppSettings();
+    }
+  }
 
   _selectContact() async {
     _contact = await _contactPicker.selectContact();
@@ -136,7 +172,7 @@ class _ForSingleNumberState extends State<ForSingleNumber> {
                       onPressed: () {
                         if (validateAndSave(_formKey)) {
                           print("object");
-                          _sendSmS();
+                          _checkPermission().then((value) => _sendSmS());
                         }
                       },
                       child: const Padding(
