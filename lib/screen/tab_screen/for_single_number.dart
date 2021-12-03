@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_native_contact_picker/flutter_native_contact_picker.dart';
 import 'package:smsbomber/service/form_validation.dart';
 import 'package:smsbomber/widget/custom_textfield.dart';
 
@@ -18,6 +19,15 @@ class _ForSingleNumberState extends State<ForSingleNumber> {
   bool _isStopMessage = true;
 
   int _currentIndexNumber = 0;
+  final FlutterContactPicker _contactPicker = FlutterContactPicker();
+  Contact? _contact;
+
+  _selectContact() async {
+    _contact = await _contactPicker.selectContact();
+    _phoneNumberCtrl.text = _contact!.phoneNumbers!.first;
+    print(_contact!.phoneNumbers);
+  }
+
   _sendSmS() async {
     setState(() {
       _isStopMessage = false;
@@ -68,7 +78,9 @@ class _ForSingleNumberState extends State<ForSingleNumber> {
                   },
                   prefixIcon: const Icon(Icons.phone_iphone),
                   suffixIcon: InkWell(
-                    onTap: () {},
+                    onTap: () {
+                      _selectContact();
+                    },
                     child: const Icon(
                       Icons.contact_page_outlined,
                       color: Colors.green,
@@ -151,6 +163,13 @@ class _ForSingleNumberState extends State<ForSingleNumber> {
                         ),
                       )),
                 ),
+                // Text('contact!.phoneNumber)
+                // ListView.builder(
+                //     itemCount: contacts.length,
+                //     itemBuilder: (buildContext, index) {
+                //       Contact contact = contacts[index];
+                //       return Text(contact.phones!.first);
+                //     })
               ],
             ),
           ),
