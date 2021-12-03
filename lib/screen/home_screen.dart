@@ -14,14 +14,17 @@ class HomeScreen extends StatelessWidget {
         appBar: AppBar(
           automaticallyImplyLeading: false,
           title: const Text("SMS Bomber"),
-          bottom: const TabBar(tabs: [
-            Tab(
-              child: Text("Single Number"),
-            ),
-            Tab(
-              child: Text("Multi Number"),
-            ),
-          ]),
+          bottom: const TabBar(
+            indicatorColor: Colors.amber,
+            tabs: [
+              Tab(
+                child: Text("To Single Number"),
+              ),
+              Tab(
+                child: Text("To Multi Number"),
+              ),
+            ],
+          ),
         ),
         body: const SizedBox(
           child: TabBarView(children: [
