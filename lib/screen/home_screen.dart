@@ -5,6 +5,16 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        title: const Text("SMS Bomber"),
+      ),
+      body: SizedBox(
+        child: Column(
+          children: [],
+        ),
+      ),
+    );
   }
 }
