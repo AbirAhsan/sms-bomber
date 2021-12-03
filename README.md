@@ -1,4 +1,4 @@
-# englishlearning
+# SMS Bomber
 
 This app developed for making fun with sms. You can send huge sms to other's number by one click. It is behaving like a bomb
 
