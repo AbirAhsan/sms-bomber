@@ -5,9 +5,11 @@ class CustomTextField extends StatelessWidget {
   final TextEditingController? controller;
   final String? labelText;
   final String? hintText;
+  final String? initialValue;
   final Widget? prefixIcon;
   final Widget? suffixIcon;
   final List<TextInputFormatter>? inputFormatters;
+  final bool? enabled;
   final int? minLines;
   final int? maxLines;
   final int? maxLength;
@@ -27,6 +29,7 @@ class CustomTextField extends StatelessWidget {
     this.maxLength,
     this.suffixIcon,
     this.inputFormatters,
+    this.enabled = true, this.initialValue,
   }) : super(key: key);
 
   @override
@@ -37,6 +40,8 @@ class CustomTextField extends StatelessWidget {
           color: Colors.grey[300],
           borderRadius: const BorderRadius.all(Radius.circular(10))),
       child: TextFormField(
+        enabled: enabled,
+        initialValue:initialValue ,
         keyboardType: keyboardType,
         controller: controller,
         validator: validator,
