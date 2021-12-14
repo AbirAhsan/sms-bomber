@@ -4,6 +4,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:smsbomber/widget/custom_drawer.dart';
 
 class ExitPopService extends StatelessWidget {
   final Widget page;
@@ -19,6 +20,12 @@ class ExitPopService extends StatelessWidget {
               title: const Text("Warning !"),
               content: const Text("Are your want to Exit ?"),
               actions: [
+                ElevatedButton(
+                  onPressed: () {
+                    contactUsService();
+                  },
+                  child: const Text("Contact Us"),
+                ),
                 ElevatedButton(
                   onPressed: () {
                     if (Platform.isIOS) {
