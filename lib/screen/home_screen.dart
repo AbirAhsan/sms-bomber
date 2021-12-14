@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:smsbomber/screen/tab_screen/for_multi_number.dart';
 import 'package:smsbomber/screen/tab_screen/for_single_number.dart';
+import 'package:smsbomber/widget/custom_drawer.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -12,7 +13,7 @@ class HomeScreen extends StatelessWidget {
       length: 2,
       child: Scaffold(
         appBar: AppBar(
-          automaticallyImplyLeading: false,
+          //  automaticallyImplyLeading: false,
           title: const Text("SMS Bomber 💣"),
           bottom: const TabBar(
             indicatorColor: Colors.amber,
@@ -25,6 +26,9 @@ class HomeScreen extends StatelessWidget {
               ),
             ],
           ),
+        ),
+        drawer: const Drawer(
+          child: CustomDrawer(),
         ),
         body: const SizedBox(
           child: TabBarView(children: [
