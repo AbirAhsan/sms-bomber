@@ -300,38 +300,38 @@ class _ForSingleNumberState extends State<ForSingleNumber> {
                           ),
                         )),
                   ),
-                  const SizedBox(
-                    height: 50,
-                  ),
-                  Text(
-                    "Total SMS \n ${_smsCountCtrl.text}",
-                    style: const TextStyle(
-                      fontSize: 22,
-                    ),
-                    textAlign: TextAlign.center,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          "Total Send \n $_totalSent/${_smsCountCtrl.text}",
-                          style: const TextStyle(
-                            fontSize: 22,
-                          ),
-                          textAlign: TextAlign.center,
-                        ),
-                        Text(
-                          "Total Delivered \n $_totalRecieved/$_totalSent",
-                          style: const TextStyle(
-                            fontSize: 22,
-                          ),
-                          textAlign: TextAlign.center,
-                        ),
-                      ],
-                    ),
-                  ),
+                  // const SizedBox(
+                  //   height: 50,
+                  // ),
+                  // Text(
+                  //   "Total SMS \n ${_smsCountCtrl.text}",
+                  //   style: const TextStyle(
+                  //     fontSize: 22,
+                  //   ),
+                  //   textAlign: TextAlign.center,
+                  // ),
+                  // Padding(
+                  //   padding: const EdgeInsets.all(8.0),
+                  //   child: Row(
+                  //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  //     children: [
+                  //       Text(
+                  //         "Total Send \n $_totalSent/${_smsCountCtrl.text}",
+                  //         style: const TextStyle(
+                  //           fontSize: 22,
+                  //         ),
+                  //         textAlign: TextAlign.center,
+                  //       ),
+                  //       Text(
+                  //         "Total Delivered \n $_totalRecieved/$_totalSent",
+                  //         style: const TextStyle(
+                  //           fontSize: 22,
+                  //         ),
+                  //         textAlign: TextAlign.center,
+                  //       ),
+                  //     ],
+                  //   ),
+                  // ),
                   // Text('contact!.phoneNumber)
                   // ListView.builder(
                   //     itemCount: contacts.length,
