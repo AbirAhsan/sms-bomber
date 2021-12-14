@@ -5,6 +5,15 @@ class ForMultiNumber extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return const Center(
+      child: Text(
+        "Not Implemented Yet",
+        style: TextStyle(
+          fontSize: 28,
+          fontStyle: FontStyle.italic,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+    );
   }
 }
