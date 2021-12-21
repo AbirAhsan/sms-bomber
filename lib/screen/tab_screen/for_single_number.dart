@@ -113,7 +113,7 @@ class _ForSingleNumberState extends State<ForSingleNumber> {
   _selectContact() async {
     _contact = await _contactPicker.selectContact();
     _phoneNumberCtrl.text = (_contact!.phoneNumbers!.first).replaceAll(
-      RegExp(r"(\s+|-|0)"),
+      RegExp(r"[^0-9\+]"),
       "",
     );
     print(_contact!.phoneNumbers);
